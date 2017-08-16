@@ -88,6 +88,12 @@ a:after {
   -o-background-size: cover;
   background-size: cover;
 }
+#me {
+  height: 20vh;
+  width: 9vw;
+  border-radius: 120px;
+  margin-top: -10vh;
+}
 
 .header h1 {
   font-size: 80px;
