@@ -1,8 +1,8 @@
 body {
-  background-color: #f2f2f2;
+  background-color: #1D2A36;
   font-family: "Lato"; /* OPTIONAL: Google Fonts - base font */
   font-weight: 300;
-  font-size: 16px;
+  font-size: 18px;
   color: #555;
 
   -webkit-font-smoothing: antialiased;
@@ -12,8 +12,8 @@ body {
 /* Titles */
 h1, h2, h3, h4, h5, h6 {
   font-family: "Raleway"; /* OPTIONAL: Google Fonts - title font */
-  font-weight: 300;
-  color: #333;
+  font-weight: 400;
+  color: #FFFFFF;
 }
 
 /* Paragraph & Typographic */
@@ -182,7 +182,7 @@ a:after {
 
 
 sm {
-  font-size: 12px;
+  font-size: 15px;
 }
 
 .desc .col-lg-3 {
@@ -193,6 +193,9 @@ sm {
   margin-bottom: 10px;
 }
 
+.container-desc{
+  background-color: #1D2A36;
+}
 /* define some CSS3 animations: */
 body {
   /* Addresses a small issue in webkit: http://bit.ly/NEdoDq */
