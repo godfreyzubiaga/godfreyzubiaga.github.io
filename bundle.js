@@ -23,8 +23,9 @@
 /******/ 	function hotDownloadManifest(requestTimeout) {
 /******/ 		requestTimeout = requestTimeout || 10000;
 /******/ 		return new Promise(function(resolve, reject) {
-/******/ 			if (typeof XMLHttpRequest === "undefined")
+/******/ 			if (typeof XMLHttpRequest === "undefined") {
 /******/ 				return reject(new Error("No browser support"));
+/******/ 			}
 /******/ 			try {
 /******/ 				var request = new XMLHttpRequest();
 /******/ 				var requestPath = __webpack_require__.p + "" + hotCurrentHash + ".hot-update.json";
@@ -62,7 +63,7 @@
 /******/ 	}
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "20b666aa10b71ca9df7b"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "39f75a1eb35a0747c37d"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -76,13 +77,16 @@
 /******/ 		var fn = function(request) {
 /******/ 			if (me.hot.active) {
 /******/ 				if (installedModules[request]) {
-/******/ 					if (installedModules[request].parents.indexOf(moduleId) === -1)
+/******/ 					if (installedModules[request].parents.indexOf(moduleId) === -1) {
 /******/ 						installedModules[request].parents.push(moduleId);
+/******/ 					}
 /******/ 				} else {
 /******/ 					hotCurrentParents = [moduleId];
 /******/ 					hotCurrentChildModule = request;
 /******/ 				}
-/******/ 				if (me.children.indexOf(request) === -1) me.children.push(request);
+/******/ 				if (me.children.indexOf(request) === -1) {
+/******/ 					me.children.push(request);
+/******/ 				}
 /******/ 			} else {
 /******/ 				console.warn(
 /******/ 					"[HMR] unexpected require(" +
@@ -224,8 +228,9 @@
 /******/ 	}
 /******/
 /******/ 	function hotCheck(apply) {
-/******/ 		if (hotStatus !== "idle")
+/******/ 		if (hotStatus !== "idle") {
 /******/ 			throw new Error("check() is only allowed in idle status");
+/******/ 		}
 /******/ 		hotApplyOnUpdate = apply;
 /******/ 		hotSetStatus("check");
 /******/ 		return hotDownloadManifest(hotRequestTimeout).then(function(update) {
@@ -728,17 +733,32 @@
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, {
-/******/ 				configurable: false,
-/******/ 				enumerable: true,
-/******/ 				get: getter
-/******/ 			});
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
 /******/ 		}
 /******/ 	};
 /******/
 /******/ 	// define __esModule on exports
 /******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
 /******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
 /******/ 	};
 /******/
 /******/ 	// getDefaultExport function for compatibility with non-harmony modules
@@ -1232,55 +1252,7 @@ eval("/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {/* globals 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("module.exports = function(module) {\r\n\tif (!module.webpackPolyfill) {\r\n\t\tmodule.deprecate = function() {};\r\n\t\tmodule.paths = [];\r\n\t\t// module.parent = undefined by default\r\n\t\tif (!module.children) module.children = [];\r\n\t\tObject.defineProperty(module, \"loaded\", {\r\n\t\t\tenumerable: true,\r\n\t\t\tget: function() {\r\n\t\t\t\treturn module.l;\r\n\t\t\t}\r\n\t\t});\r\n\t\tObject.defineProperty(module, \"id\", {\r\n\t\t\tenumerable: true,\r\n\t\t\tget: function() {\r\n\t\t\t\treturn module.i;\r\n\t\t\t}\r\n\t\t});\r\n\t\tmodule.webpackPolyfill = 1;\r\n\t}\r\n\treturn module;\r\n};\r\n\n\n//# sourceURL=webpack:///(webpack)/buildin/module.js?");
-
-/***/ }),
-
-/***/ "./src/frontend/Pages/AboutMePage/AboutMePage.jsx":
-/*!********************************************************!*\
-  !*** ./src/frontend/Pages/AboutMePage/AboutMePage.jsx ***!
-  \********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _styledComponents = __webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.es.js\");\n\nvar _styledComponents2 = _interopRequireDefault(_styledComponents);\n\nvar _ContentContainer = __webpack_require__(/*! ../../components/ContentContainer */ \"./src/frontend/components/ContentContainer.jsx\");\n\nvar _ContentContainer2 = _interopRequireDefault(_ContentContainer);\n\nvar _Button = __webpack_require__(/*! ../../components/Button */ \"./src/frontend/components/Button.jsx\");\n\nvar _Button2 = _interopRequireDefault(_Button);\n\nvar _myface = __webpack_require__(/*! ../../assets/images/myface */ \"./src/frontend/assets/images/myface.js\");\n\nvar _myface2 = _interopRequireDefault(_myface);\n\nvar _whatiuse = __webpack_require__(/*! ../../assets/images/whatiuse */ \"./src/frontend/assets/images/whatiuse.js\");\n\nvar _whatiuse2 = _interopRequireDefault(_whatiuse);\n\nvar _web = __webpack_require__(/*! ../../assets/images/web */ \"./src/frontend/assets/images/web.js\");\n\nvar _web2 = _interopRequireDefault(_web);\n\nvar _mobile = __webpack_require__(/*! ../../assets/images/mobile */ \"./src/frontend/assets/images/mobile.js\");\n\nvar _mobile2 = _interopRequireDefault(_mobile);\n\nvar _enterprise = __webpack_require__(/*! ../../assets/images/enterprise */ \"./src/frontend/assets/images/enterprise.js\");\n\nvar _enterprise2 = _interopRequireDefault(_enterprise);\n\nvar _socialmedia = __webpack_require__(/*! ../../assets/images/socialmedia */ \"./src/frontend/assets/images/socialmedia.js\");\n\nvar _socialmedia2 = _interopRequireDefault(_socialmedia);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nconst StyledDiv = _styledComponents2.default.div`\n  display: grid;\n  grid-area: about;\n  grid-template-areas: '.' 'content';\n  grid-auto-rows: 80px 1fr;\n  height: 100vh;\n`;\n\nconst InnerContainer = _styledComponents2.default.div`\n  height: 100%;\n  display: grid;\n  @media screen and (min-width: 700px) {\n    grid-template-areas: 'buttons contents';\n    grid-auto-columns: 1fr 4fr;\n    grid-auto-rows: auto 1fr;\n    grid-gap: 20px;\n  }\n`;\n\nconst ButtonsContainer = _styledComponents2.default.div`\n  grid-area: buttons;\n`;\n\nconst ButtonGroup = _styledComponents2.default.div`\n  position: relative;\n  top: 50%;\n  transform: translateY(-50%);\n  width: 100%;\n  margin: 0 auto;\n`;\n\nconst NameContainer = _styledComponents2.default.div`\n  grid-area: name;\n  letter-spacing: 0.15em;\n`;\n\nconst Contents = _styledComponents2.default.div`\n  grid-area: contents;\n  display: grid;\n  grid-template-areas: 'name' 'value';\n  grid-auto-rows: 50px 1fr;\n  margin: 20px;\n`;\n\nconst Content = _styledComponents2.default.div`\n  width: 80%;\n  margin: auto;\n  grid-area: value;\n  height: 90%;\n  visibility: hidden;\n`;\n\nconst ImageContainer = _styledComponents2.default.div`\n  height: 120px;\n  width: 120px;\n  margin: auto;\n  background: url(${_myface2.default});\n  background-repeat: no-repeat;\n  background-position: center;\n  background-size: auto 100%;\n`;\n\nconst WhoIsThisGuy = _styledComponents2.default.p`\n  margin: 20px;\n  font-size: 0.4em;\n`;\n\nconst Description = _styledComponents2.default.p`\n  text-align: justify;\n  font-size: 0.6em;\n  margin: 30px 50px;\n  line-height: 1.6;\n  text-shadow: 8px 4px 10px rgba(0, 0, 0, 1);\n`;\n\nconst WhatIUseContainer = _styledComponents2.default.div`\n  background: url(${_whatiuse2.default});\n  background-repeat: no-repeat;\n  background-position: center;\n  background-size: auto 100%;\n  height: 100%;\n  width: 100%;\n`;\n\nconst WhatIDoContainer = _styledComponents2.default.div`\n  display: grid;\n  height: 100%;\n  grid-template-areas: 'enterprise socialmedia' 'web mobile';\n  grid-auto-rows: 1fr;\n  grid-auto-columns: 1fr;\n  grid-row-gap: 20px;\n  height: 100%;\n`;\n\nconst Box = _styledComponents2.default.div`\n  width: 120px;\n  height: 120px;\n  text-align: center;\n  margin: 20px auto;\n  border-radius:\n  transition-duration: 0.5s;\n\n  &:hover {\n    transition-duration: 0.5s;\n    transform: scale(1.2);\n  }\n`;\n\nconst StyledText = _styledComponents2.default.div`\n  font-size: 0.6em;\n  margin: 0 0 20px 0;\n`;\n\nconst Enterprise = (0, _styledComponents2.default)(Box)`\n  grid-area: enterprise;\n  background: url(${_enterprise2.default});\n  background-repeat: no-repeat;\n  background-position: center;\n  background-size: auto 100%;\n`;\n\nconst Web = (0, _styledComponents2.default)(Box)`\n  grid-area: web;\n  background: url(${_web2.default});\n  background-repeat: no-repeat;\n  background-position: center;\n  background-size: auto 100%;\n`;\n\nconst Mobile = (0, _styledComponents2.default)(Box)`\n  grid-area: mobile;\n  background: url(${_mobile2.default});\n  background-repeat: no-repeat;\n  background-position: center;\n  background-size: auto 100%;\n`;\n\nconst SocialMedia = (0, _styledComponents2.default)(Box)`\n  grid-area: socialmedia;\n  background: url(${_socialmedia2.default});\n  background-repeat: no-repeat;\n  background-position: center;\n  background-size: auto 100%;\n`;\n\nclass AboutMePage extends _react2.default.Component {\n  constructor() {\n    super();\n    this.state = {\n      pages: document.getElementsByClassName('value')\n    };\n  }\n  componentDidMount() {\n    this.state.pages[0].style.visibility = 'visible';\n  }\n\n  render() {\n    const buttonPressed = pageNumber => {\n      const { pages } = this.state;\n      for (let i = 0; i < pages.length; i += 1) {\n        pages[i].style.visibility = 'hidden';\n      }\n      pages[pageNumber].style.visibility = 'visible';\n    };\n\n    const buttonProps = {\n      width: '100%',\n      margin: '20px 10px',\n      padding: '15px 10px'\n    };\n\n    return _react2.default.createElement(\n      StyledDiv,\n      { id: 'about' },\n      _react2.default.createElement(\n        _ContentContainer2.default,\n        null,\n        _react2.default.createElement(\n          InnerContainer,\n          null,\n          _react2.default.createElement(\n            ButtonsContainer,\n            null,\n            _react2.default.createElement(\n              ButtonGroup,\n              null,\n              _react2.default.createElement(_Button2.default, _extends({}, buttonProps, {\n                action: () => buttonPressed(0),\n                name: 'This is who I am'\n              })),\n              _react2.default.createElement('br', null),\n              _react2.default.createElement(_Button2.default, _extends({}, buttonProps, {\n                action: () => buttonPressed(1),\n                name: 'This is what I do'\n              })),\n              _react2.default.createElement('br', null),\n              _react2.default.createElement(_Button2.default, _extends({}, buttonProps, {\n                action: () => buttonPressed(2),\n                name: 'This is what I use'\n              }))\n            )\n          ),\n          _react2.default.createElement(\n            Contents,\n            null,\n            _react2.default.createElement(\n              NameContainer,\n              null,\n              'Hi! ',\n              \"I'm\",\n              ' Godfrey Zubiaga'\n            ),\n            _react2.default.createElement(\n              Content,\n              { className: 'value', id: 'whoiam' },\n              _react2.default.createElement(\n                'div',\n                null,\n                _react2.default.createElement(ImageContainer, null),\n                _react2.default.createElement(\n                  WhoIsThisGuy,\n                  null,\n                  'Who is this guy?'\n                ),\n                _react2.default.createElement(\n                  Description,\n                  null,\n                  'Just another frontend develper who loves developing applications that makes peoples\\' life easier. I usually am the one who makes the designs of the project that I\\'m working on. And I\\'m the type of guy who doesn\\'t use frameworks (i.e. MaterialUI, Bootsrap, etc) unless it is required or really needed. These frameworks, for me, limits my own abilities in designing things. Oh! and I love cats and dogs.'\n                )\n              )\n            ),\n            _react2.default.createElement(\n              Content,\n              { className: 'value', id: 'whatido' },\n              _react2.default.createElement(\n                WhatIDoContainer,\n                null,\n                _react2.default.createElement(\n                  'div',\n                  null,\n                  _react2.default.createElement(\n                    StyledText,\n                    null,\n                    'Enterprise Applications'\n                  ),\n                  _react2.default.createElement(Enterprise, null)\n                ),\n                _react2.default.createElement(\n                  'div',\n                  null,\n                  _react2.default.createElement(\n                    StyledText,\n                    null,\n                    'Web Applications'\n                  ),\n                  _react2.default.createElement(Web, null)\n                ),\n                _react2.default.createElement(\n                  'div',\n                  null,\n                  _react2.default.createElement(\n                    StyledText,\n                    null,\n                    'Mobile Applications'\n                  ),\n                  _react2.default.createElement(Mobile, null)\n                ),\n                _react2.default.createElement(\n                  'div',\n                  null,\n                  _react2.default.createElement(\n                    StyledText,\n                    null,\n                    'Social Media Applications'\n                  ),\n                  _react2.default.createElement(SocialMedia, null)\n                )\n              )\n            ),\n            _react2.default.createElement(\n              Content,\n              { className: 'value', id: 'whatiuse' },\n              _react2.default.createElement(WhatIUseContainer, null)\n            )\n          )\n        )\n      )\n    );\n  }\n}\n\nexports.default = AboutMePage;\n\n//# sourceURL=webpack:///./src/frontend/Pages/AboutMePage/AboutMePage.jsx?");
-
-/***/ }),
-
-/***/ "./src/frontend/Pages/ContactMePage/ContactMePage.jsx":
-/*!************************************************************!*\
-  !*** ./src/frontend/Pages/ContactMePage/ContactMePage.jsx ***!
-  \************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _styledComponents = __webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.es.js\");\n\nvar _styledComponents2 = _interopRequireDefault(_styledComponents);\n\nvar _ContentContainer = __webpack_require__(/*! ../../components/ContentContainer */ \"./src/frontend/components/ContentContainer.jsx\");\n\nvar _ContentContainer2 = _interopRequireDefault(_ContentContainer);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nconst StyledDiv = _styledComponents2.default.div`\n  grid-area: contact;\n  display: grid;\n  grid-template-areas: '.' 'content';\n  grid-auto-rows: 80px 1fr;\n`;\n\nexports.default = () => _react2.default.createElement(\n  StyledDiv,\n  { id: 'contact' },\n  _react2.default.createElement(\n    _ContentContainer2.default,\n    null,\n    'Let me help you build!'\n  )\n);\n\n//# sourceURL=webpack:///./src/frontend/Pages/ContactMePage/ContactMePage.jsx?");
-
-/***/ }),
-
-/***/ "./src/frontend/Pages/LandingPage/LandingPage.jsx":
-/*!********************************************************!*\
-  !*** ./src/frontend/Pages/LandingPage/LandingPage.jsx ***!
-  \********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _styledComponents = __webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.es.js\");\n\nvar _styledComponents2 = _interopRequireDefault(_styledComponents);\n\nvar _ContentContainer = __webpack_require__(/*! ../../components/ContentContainer */ \"./src/frontend/components/ContentContainer.jsx\");\n\nvar _ContentContainer2 = _interopRequireDefault(_ContentContainer);\n\nvar _design = __webpack_require__(/*! ../../assets/images/design */ \"./src/frontend/assets/images/design.js\");\n\nvar _design2 = _interopRequireDefault(_design);\n\nvar _designMobile = __webpack_require__(/*! ../../assets/images/designMobile */ \"./src/frontend/assets/images/designMobile.js\");\n\nvar _designMobile2 = _interopRequireDefault(_designMobile);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nconst StyledDiv = _styledComponents2.default.div`\n  grid-area: landing;\n  display: grid;\n  grid-template-areas: '.' 'content';\n  grid-auto-rows: 80px 1fr;\n  z-index: -1;\n`;\n\nconst ImageContainer = _styledComponents2.default.div`\n  position: relative;\n  height: 100%;\n`;\n\nconst Image = _styledComponents2.default.div`\n  height: 100%;\n  @media screen and (max-width: 700px) {\n    background: url(${_designMobile2.default});\n    background-size: 100% auto;\n    background-repeat: no-repeat;\n    background-position: center;\n    margin: -20px;\n  }\n\n  @media screen and (min-width: 700px) {\n    background: url(${_design2.default});\n    background-size: 80% 90%;\n    background-repeat: no-repeat;\n    background-position: center;\n  }\n`;\n\nconst FadeIn = _styledComponents.keyframes`\n  from {\n    opacity: 0;\n    color: #b0b6b7;\n  }\n\n  to {\n    opacity: 100%;\n    color: #f2fcfe;\n  }\n`;\n\nconst Name = _styledComponents2.default.p`\n  font-size: 1em;\n  animation: ${FadeIn} 2s linear;\n  margin: 20px 0 -20px 0;\n\n  @media screen and (max-width: 700px) {\n    margin: 50px 0 0 0;\n    font-size: 0.8em;\n  }\n`;\n\nexports.default = () => _react2.default.createElement(\n  StyledDiv,\n  { id: 'landing' },\n  _react2.default.createElement(\n    _ContentContainer2.default,\n    null,\n    _react2.default.createElement(\n      ImageContainer,\n      null,\n      _react2.default.createElement(\n        Name,\n        null,\n        'G O D F R E Y\\xA0\\xA0\\xA0Z U B I A G A'\n      ),\n      _react2.default.createElement(Image, null)\n    )\n  )\n);\n\n//# sourceURL=webpack:///./src/frontend/Pages/LandingPage/LandingPage.jsx?");
-
-/***/ }),
-
-/***/ "./src/frontend/Pages/WorksPage/WorksPage.jsx":
-/*!****************************************************!*\
-  !*** ./src/frontend/Pages/WorksPage/WorksPage.jsx ***!
-  \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _styledComponents = __webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.es.js\");\n\nvar _styledComponents2 = _interopRequireDefault(_styledComponents);\n\nvar _ContentContainer = __webpack_require__(/*! ../../components/ContentContainer */ \"./src/frontend/components/ContentContainer.jsx\");\n\nvar _ContentContainer2 = _interopRequireDefault(_ContentContainer);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nconst StyledDiv = _styledComponents2.default.div`\n  grid-area: works;\n  display: grid;\n  grid-template-areas: '.' 'content';\n  grid-auto-rows: 80px 1fr;\n`;\n\nexports.default = () => _react2.default.createElement(\n  StyledDiv,\n  { id: 'works' },\n  _react2.default.createElement(\n    _ContentContainer2.default,\n    null,\n    'Works & Projects Page'\n  )\n);\n\n//# sourceURL=webpack:///./src/frontend/Pages/WorksPage/WorksPage.jsx?");
+eval("module.exports = function(module) {\n\tif (!module.webpackPolyfill) {\n\t\tmodule.deprecate = function() {};\n\t\tmodule.paths = [];\n\t\t// module.parent = undefined by default\n\t\tif (!module.children) module.children = [];\n\t\tObject.defineProperty(module, \"loaded\", {\n\t\t\tenumerable: true,\n\t\t\tget: function() {\n\t\t\t\treturn module.l;\n\t\t\t}\n\t\t});\n\t\tObject.defineProperty(module, \"id\", {\n\t\t\tenumerable: true,\n\t\t\tget: function() {\n\t\t\t\treturn module.i;\n\t\t\t}\n\t\t});\n\t\tmodule.webpackPolyfill = 1;\n\t}\n\treturn module;\n};\n\n\n//# sourceURL=webpack:///(webpack)/buildin/module.js?");
 
 /***/ }),
 
@@ -1292,115 +1264,79 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = 'http://res.cloudinary.com/starksten/image/upload/c_scale,h_990,w_1440/v1527236829/portfolio/ZenBG.png';\n\n//# sourceURL=webpack:///./src/frontend/assets/images/background.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = 'http://res.cloudinary.com/starksten/image/upload/v1528125279/new-portfolio/wallpaper.png';\n\n//# sourceURL=webpack:///./src/frontend/assets/images/background.js?");
 
 /***/ }),
 
-/***/ "./src/frontend/assets/images/design.js":
-/*!**********************************************!*\
-  !*** ./src/frontend/assets/images/design.js ***!
-  \**********************************************/
+/***/ "./src/frontend/assets/images/email.js":
+/*!*********************************************!*\
+  !*** ./src/frontend/assets/images/email.js ***!
+  \*********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = 'http://res.cloudinary.com/starksten/image/upload/v1527265354/designWeb.png';\n\n//# sourceURL=webpack:///./src/frontend/assets/images/design.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = 'http://res.cloudinary.com/starksten/image/upload/v1528125308/new-portfolio/email.png';\n\n//# sourceURL=webpack:///./src/frontend/assets/images/email.js?");
 
 /***/ }),
 
-/***/ "./src/frontend/assets/images/designMobile.js":
-/*!****************************************************!*\
-  !*** ./src/frontend/assets/images/designMobile.js ***!
-  \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = 'http://res.cloudinary.com/starksten/image/upload/v1527266929/designMobile.png';\n\n//# sourceURL=webpack:///./src/frontend/assets/images/designMobile.js?");
-
-/***/ }),
-
-/***/ "./src/frontend/assets/images/enterprise.js":
-/*!**************************************************!*\
-  !*** ./src/frontend/assets/images/enterprise.js ***!
-  \**************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = 'http://res.cloudinary.com/starksten/image/upload/v1527604172/portfolio/enterprise.png';\n\n//# sourceURL=webpack:///./src/frontend/assets/images/enterprise.js?");
-
-/***/ }),
-
-/***/ "./src/frontend/assets/images/logo.js":
-/*!********************************************!*\
-  !*** ./src/frontend/assets/images/logo.js ***!
-  \********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = 'http://res.cloudinary.com/starksten/image/upload/v1527250219/portfolio/logo_white.png';\n\n//# sourceURL=webpack:///./src/frontend/assets/images/logo.js?");
-
-/***/ }),
-
-/***/ "./src/frontend/assets/images/mobile.js":
-/*!**********************************************!*\
-  !*** ./src/frontend/assets/images/mobile.js ***!
-  \**********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = 'http://res.cloudinary.com/starksten/image/upload/v1527604171/portfolio/mobileapps.png';\n\n//# sourceURL=webpack:///./src/frontend/assets/images/mobile.js?");
-
-/***/ }),
-
-/***/ "./src/frontend/assets/images/myface.js":
-/*!**********************************************!*\
-  !*** ./src/frontend/assets/images/myface.js ***!
-  \**********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = 'http://res.cloudinary.com/starksten/image/upload/v1527605774/portfolio/saaaaa.png';\n\n//# sourceURL=webpack:///./src/frontend/assets/images/myface.js?");
-
-/***/ }),
-
-/***/ "./src/frontend/assets/images/socialmedia.js":
-/*!***************************************************!*\
-  !*** ./src/frontend/assets/images/socialmedia.js ***!
-  \***************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = 'http://res.cloudinary.com/starksten/image/upload/v1527604172/portfolio/socialmedia.png';\n\n//# sourceURL=webpack:///./src/frontend/assets/images/socialmedia.js?");
-
-/***/ }),
-
-/***/ "./src/frontend/assets/images/web.js":
-/*!*******************************************!*\
-  !*** ./src/frontend/assets/images/web.js ***!
-  \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = 'http://res.cloudinary.com/starksten/image/upload/v1527604170/portfolio/webapps.png';\n\n//# sourceURL=webpack:///./src/frontend/assets/images/web.js?");
-
-/***/ }),
-
-/***/ "./src/frontend/assets/images/whatiuse.js":
+/***/ "./src/frontend/assets/images/facebook.js":
 /*!************************************************!*\
-  !*** ./src/frontend/assets/images/whatiuse.js ***!
+  !*** ./src/frontend/assets/images/facebook.js ***!
   \************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = 'http://res.cloudinary.com/starksten/image/upload/v1527602794/portfolio/what_I_useasdasd.png';\n\n//# sourceURL=webpack:///./src/frontend/assets/images/whatiuse.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = 'http://res.cloudinary.com/starksten/image/upload/v1528125308/new-portfolio/facebook.png';\n\n//# sourceURL=webpack:///./src/frontend/assets/images/facebook.js?");
+
+/***/ }),
+
+/***/ "./src/frontend/assets/images/github.js":
+/*!**********************************************!*\
+  !*** ./src/frontend/assets/images/github.js ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = 'http://res.cloudinary.com/starksten/image/upload/v1528125307/new-portfolio/github.png';\n\n//# sourceURL=webpack:///./src/frontend/assets/images/github.js?");
+
+/***/ }),
+
+/***/ "./src/frontend/assets/images/imageNotAvailable.js":
+/*!*********************************************************!*\
+  !*** ./src/frontend/assets/images/imageNotAvailable.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = 'http://res.cloudinary.com/starksten/image/upload/v1528133879/new-portfolio/Not_available.jpg';\n\n//# sourceURL=webpack:///./src/frontend/assets/images/imageNotAvailable.js?");
+
+/***/ }),
+
+/***/ "./src/frontend/assets/images/phone.js":
+/*!*********************************************!*\
+  !*** ./src/frontend/assets/images/phone.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = 'http://res.cloudinary.com/starksten/image/upload/v1528125308/new-portfolio/phone.png';\n\n//# sourceURL=webpack:///./src/frontend/assets/images/phone.js?");
+
+/***/ }),
+
+/***/ "./src/frontend/assets/themes/black.js":
+/*!*********************************************!*\
+  !*** ./src/frontend/assets/themes/black.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = '#505050';\n\n//# sourceURL=webpack:///./src/frontend/assets/themes/black.js?");
 
 /***/ }),
 
@@ -1412,7 +1348,31 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _styledComponents = __webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.es.js\");\n\nvar _background = __webpack_require__(/*! ../images/background */ \"./src/frontend/assets/images/background.js\");\n\nvar _background2 = _interopRequireDefault(_background);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.default = () => _styledComponents.injectGlobal`\n  body {\n    margin: 0;    \n    font-family: 'Armata', sans-serif;\n    color: white;\n    height: 400vh;\n    background: url(${_background2.default});\n    background-size: cover;\n    background-attachment: fixed;\n    scroll: smooth;\n    overflow-y: hidden;\n\n    @media screen and (max-width: 700px) {\n      font-size: 0.8em;\n      overflow-y: auto;\n      height: 100vh;\n    }\n  }\n\n  h1, h2, h3, h4, h5, h6, p {\n    margin: 0;\n  }\n\n  a {\n    text-decoration: none;\n    color: white;\n  }\n`;\n\n//# sourceURL=webpack:///./src/frontend/assets/themes/global.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _styledComponents = __webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.es.js\");\n\nvar _background = __webpack_require__(/*! ../../assets/images/background */ \"./src/frontend/assets/images/background.js\");\n\nvar _background2 = _interopRequireDefault(_background);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.default = () => _styledComponents.injectGlobal`\n  body {\n    margin: 0;\n    scroll: smooth;\n    background: url(${_background2.default});\n    background-size: cover;\n    background-repeat: no-repeat;\n    background-attachment: fixed;\n    font-family: 'Source Sans Pro', sans-serif;\n\n    @media screen and (max-width: 700px) {\n      background-position: center center;\n    }\n  }\n\n  h1, h2, h3, h4, h5, h6, p {\n    margin: 0;\n  }\n`;\n\n//# sourceURL=webpack:///./src/frontend/assets/themes/global.js?");
+
+/***/ }),
+
+/***/ "./src/frontend/assets/themes/white.js":
+/*!*********************************************!*\
+  !*** ./src/frontend/assets/themes/white.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = '#FAFAFA';\n\n//# sourceURL=webpack:///./src/frontend/assets/themes/white.js?");
+
+/***/ }),
+
+/***/ "./src/frontend/components/AboutMe/index.jsx":
+/*!***************************************************!*\
+  !*** ./src/frontend/components/AboutMe/index.jsx ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _styledComponents = __webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.es.js\");\n\nvar _styledComponents2 = _interopRequireDefault(_styledComponents);\n\nvar _black = __webpack_require__(/*! ../../assets/themes/black */ \"./src/frontend/assets/themes/black.js\");\n\nvar _black2 = _interopRequireDefault(_black);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nconst StyledDiv = _styledComponents2.default.div`\n  text-align: center;\n  grid-area: about;\n  margin: 40px 0 30px 0;\n  color: ${_black2.default};\n\n  @media screen and (max-width: 700px) {\n    margin: 30px 10px 0 10px;\n    font-size: 0.8em;\n  }\n`;\n\nconst NameContainer = _styledComponents2.default.div`\n  margin-bottom: 30px;\n`;\n\nconst StyledName = _styledComponents2.default.p`\n  font-size: 2em;\n  letter-spacing: 15px;\n  font-weight: bold;\n\n  @media screen and (max-width: 700px) {\n    font-size: 1.5em;\n    letter-spacing: 10px;\n  }\n`;\n\nconst StyledTitle = _styledComponents2.default.p`\n  font-style: italic;\n  font-size: 1.5em;\n  font-weight: 100;\n`;\n\nconst InformationContainer = _styledComponents2.default.div`\n  margin: 30px 0 20px 0;\n  line-height: 30px;\n  font-size: 1.1em;\n  @media screen and (max-width: 700px) {\n    line-height: 20px;\n  }\n`;\n\nconst InformationText = _styledComponents2.default.div``;\n\nexports.default = () => _react2.default.createElement(\n  StyledDiv,\n  null,\n  _react2.default.createElement(\n    NameContainer,\n    null,\n    _react2.default.createElement(\n      StyledName,\n      null,\n      'GODFREY ZUBIAGA'\n    ),\n    _react2.default.createElement(\n      StyledTitle,\n      null,\n      'Frontend Developer'\n    ),\n    _react2.default.createElement(\n      InformationContainer,\n      null,\n      _react2.default.createElement(\n        InformationText,\n        null,\n        'I\\'m a Frontend Developer from the Philippines.'\n      ),\n      _react2.default.createElement(\n        InformationText,\n        null,\n        'I use ReactJS for developing Websites and Web Applications.'\n      ),\n      _react2.default.createElement(\n        InformationText,\n        null,\n        'I enjoy making them, so be a good lad and give me something to have fun with.'\n      )\n    )\n  )\n);\n\n//# sourceURL=webpack:///./src/frontend/components/AboutMe/index.jsx?");
 
 /***/ }),
 
@@ -1424,43 +1384,79 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _styledComponents = __webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.es.js\");\n\nvar _styledComponents2 = _interopRequireDefault(_styledComponents);\n\nvar _Header = __webpack_require__(/*! ./Header */ \"./src/frontend/components/Header.jsx\");\n\nvar _Header2 = _interopRequireDefault(_Header);\n\nvar _LandingPage = __webpack_require__(/*! ../Pages/LandingPage/LandingPage */ \"./src/frontend/Pages/LandingPage/LandingPage.jsx\");\n\nvar _LandingPage2 = _interopRequireDefault(_LandingPage);\n\nvar _AboutMePage = __webpack_require__(/*! ../Pages/AboutMePage/AboutMePage */ \"./src/frontend/Pages/AboutMePage/AboutMePage.jsx\");\n\nvar _AboutMePage2 = _interopRequireDefault(_AboutMePage);\n\nvar _WorksPage = __webpack_require__(/*! ../Pages/WorksPage/WorksPage */ \"./src/frontend/Pages/WorksPage/WorksPage.jsx\");\n\nvar _WorksPage2 = _interopRequireDefault(_WorksPage);\n\nvar _ContactMePage = __webpack_require__(/*! ../Pages/ContactMePage/ContactMePage */ \"./src/frontend/Pages/ContactMePage/ContactMePage.jsx\");\n\nvar _ContactMePage2 = _interopRequireDefault(_ContactMePage);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nconst StyledDiv = _styledComponents2.default.div`\n  @media screen and (min-width: 700px) {\n    font-size: 2em;\n    display: grid;\n    grid-template-areas: 'landing' 'about' 'works' 'contact';\n    grid-auto-rows: 100vh;\n    text-align: center;\n  }\n\n  @media screen and (max-width: 700px) {\n    display: none;\n    height: 100vh;\n  }\n`;\n\nconst HeaderContainer = _styledComponents2.default.div`\n  position: fixed;\n  background: rgb(28, 146, 210);\n  width: 100vw;\n`;\n\nconst ErrorContainer = _styledComponents2.default.div`\n  display: none;\n  height: 100vh;\n  @media screen and (max-width: 700px) {\n    display: block;\n  }\n`;\n\nconst Error = _styledComponents2.default.p`\n  font-size: 2em;\n  text-align: center;\n  position: relative;\n  top: 50%;\n  transform: translateY(-50%);\n  text-shadow: 4px 4px 7px rgba(0, 0, 0, 1);\n  transform: rotate(90deg);\n  width: 110vw;\n`;\n\nexports.default = () => _react2.default.createElement(\n  'div',\n  null,\n  _react2.default.createElement(\n    ErrorContainer,\n    null,\n    _react2.default.createElement(\n      Error,\n      null,\n      'Not yet available on mobile view.',\n      _react2.default.createElement('br', null),\n      'Try to open it on your PC or Laptop instead.'\n    )\n  ),\n  _react2.default.createElement(\n    StyledDiv,\n    null,\n    _react2.default.createElement(\n      HeaderContainer,\n      null,\n      _react2.default.createElement(_Header2.default, null)\n    ),\n    _react2.default.createElement(_LandingPage2.default, null),\n    _react2.default.createElement(_AboutMePage2.default, null),\n    _react2.default.createElement(_WorksPage2.default, null),\n    _react2.default.createElement(_ContactMePage2.default, null)\n  )\n);\n\n//# sourceURL=webpack:///./src/frontend/components/App.jsx?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _styledComponents = __webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.es.js\");\n\nvar _styledComponents2 = _interopRequireDefault(_styledComponents);\n\nvar _index = __webpack_require__(/*! ./AboutMe/index */ \"./src/frontend/components/AboutMe/index.jsx\");\n\nvar _index2 = _interopRequireDefault(_index);\n\nvar _index3 = __webpack_require__(/*! ./Skills/index */ \"./src/frontend/components/Skills/index.jsx\");\n\nvar _index4 = _interopRequireDefault(_index3);\n\nvar _index5 = __webpack_require__(/*! ./Portfolio/index */ \"./src/frontend/components/Portfolio/index.jsx\");\n\nvar _index6 = _interopRequireDefault(_index5);\n\nvar _index7 = __webpack_require__(/*! ./Footer/index */ \"./src/frontend/components/Footer/index.jsx\");\n\nvar _index8 = _interopRequireDefault(_index7);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nconst StyledDiv = _styledComponents2.default.div`\n  display: grid;\n  grid-template-areas: 'about' 'skills' 'portfolio' 'footer';\n  grid-auto-rows: auto;\n`;\n\nexports.default = () => _react2.default.createElement(\n  StyledDiv,\n  null,\n  _react2.default.createElement(_index2.default, null),\n  _react2.default.createElement(_index4.default, null),\n  _react2.default.createElement(_index6.default, null),\n  _react2.default.createElement(_index8.default, null)\n);\n\n//# sourceURL=webpack:///./src/frontend/components/App.jsx?");
 
 /***/ }),
 
-/***/ "./src/frontend/components/Button.jsx":
-/*!********************************************!*\
-  !*** ./src/frontend/components/Button.jsx ***!
-  \********************************************/
+/***/ "./src/frontend/components/Footer/Item.jsx":
+/*!*************************************************!*\
+  !*** ./src/frontend/components/Footer/Item.jsx ***!
+  \*************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _styledComponents = __webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.es.js\");\n\nvar _styledComponents2 = _interopRequireDefault(_styledComponents);\n\nvar _propTypes = __webpack_require__(/*! prop-types */ \"./node_modules/prop-types/index.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nconst StyledButton = _styledComponents2.default.button`\n  padding: ${props => props.padding};\n  background: #f2fcfe;\n  color: black;\n  border: none;\n  border-radius: 5px;\n  font-size: 0.5em;\n  cursor: pointer;\n  margin: ${props => props.margin};\n  width: ${props => props.width};\n  height: ${props => props.height};\n  box-shadow: 5px 8px 15px rgba(0, 0, 0, 0.3);\n  transition: all 0.3s ease 0s;\n\n  &:active {\n    outline: 0;\n  }\n\n  &:hover {\n    background: #1c92d2;\n    color: white;\n    transform: translateY(-10px);\n    box-shadow: 10px 15px 20px rgba(0, 0, 0, 0.4);\n  }\n`;\n\nconst Button = ({\n  name, action, width, padding, margin, height\n}) => {\n  const props = {\n    name,\n    action,\n    width,\n    height,\n    padding,\n    margin\n  };\n\n  return _react2.default.createElement(\n    StyledButton,\n    {\n      onClick: action,\n      width: width,\n      height: height,\n      padding: padding,\n      margin: margin\n    },\n    props.name\n  );\n};\n\nButton.propTypes = {\n  name: _propTypes.string.isRequired,\n  action: _propTypes.func,\n  width: _propTypes.string,\n  height: _propTypes.string,\n  padding: _propTypes.string,\n  margin: _propTypes.string\n};\n\nButton.defaultProps = {\n  action: null,\n  width: 'auto',\n  height: 'auto',\n  padding: '10px 30px',\n  margin: '10px'\n};\n\nexports.default = Button;\n\n//# sourceURL=webpack:///./src/frontend/components/Button.jsx?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _styledComponents = __webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.es.js\");\n\nvar _styledComponents2 = _interopRequireDefault(_styledComponents);\n\nvar _propTypes = __webpack_require__(/*! prop-types */ \"./node_modules/prop-types/index.js\");\n\nvar _white = __webpack_require__(/*! ../../assets/themes/white */ \"./src/frontend/assets/themes/white.js\");\n\nvar _white2 = _interopRequireDefault(_white);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nconst StyledDiv = _styledComponents2.default.div`\n  margin: 10px;\n`;\n\nconst StyledLink = _styledComponents2.default.a`\n  color: ${_white2.default};\n  text-decoration: none;\n  display: inline-block;\n`;\n\nconst ImageContainer = _styledComponents2.default.span`\n  height: 50px;\n  width: 50px;\n  background: url(${props => props.image});\n  background-size: 100% 100%;\n  background-repeat: no-repeat;\n  grid-area: image;\n  display: inline-block;\n`;\n\nconst TextContainer = _styledComponents2.default.div`\n  position: relative;\n  top: 50%;\n  transform: translateY(-70%);\n  grid-area: text;\n  margin-left: 10px;\n  display: inline-block;\n`;\n\nconst Item = ({ data, image, link }) => _react2.default.createElement(\n  StyledDiv,\n  null,\n  link === null ? _react2.default.createElement(\n    'div',\n    null,\n    _react2.default.createElement(ImageContainer, { image: image }),\n    _react2.default.createElement(\n      TextContainer,\n      null,\n      ' ',\n      data,\n      ' '\n    )\n  ) : _react2.default.createElement(\n    StyledLink,\n    { href: link },\n    _react2.default.createElement(ImageContainer, { image: image }),\n    _react2.default.createElement(\n      TextContainer,\n      null,\n      ' ',\n      data,\n      ' '\n    )\n  )\n);\n\nItem.propTypes = {\n  data: _propTypes.string.isRequired,\n  image: _propTypes.string.isRequired,\n  link: _propTypes.string\n};\n\nItem.defaultProps = {\n  link: null\n};\n\nexports.default = Item;\n\n//# sourceURL=webpack:///./src/frontend/components/Footer/Item.jsx?");
 
 /***/ }),
 
-/***/ "./src/frontend/components/ContentContainer.jsx":
-/*!******************************************************!*\
-  !*** ./src/frontend/components/ContentContainer.jsx ***!
-  \******************************************************/
+/***/ "./src/frontend/components/Footer/index.jsx":
+/*!**************************************************!*\
+  !*** ./src/frontend/components/Footer/index.jsx ***!
+  \**************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _styledComponents = __webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.es.js\");\n\nvar _styledComponents2 = _interopRequireDefault(_styledComponents);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nconst ContentContainer = _styledComponents2.default.div`\n  grid-area: content;\n  background: rgba(0, 0, 0, 0.2);\n  margin: 20px;\n  border-radius: 5px;\n  padding: 20px;\n`;\n\nexports.default = ContentContainer;\n\n//# sourceURL=webpack:///./src/frontend/components/ContentContainer.jsx?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _styledComponents = __webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.es.js\");\n\nvar _styledComponents2 = _interopRequireDefault(_styledComponents);\n\nvar _black = __webpack_require__(/*! ../../assets/themes/black */ \"./src/frontend/assets/themes/black.js\");\n\nvar _black2 = _interopRequireDefault(_black);\n\nvar _white = __webpack_require__(/*! ../../assets/themes/white */ \"./src/frontend/assets/themes/white.js\");\n\nvar _white2 = _interopRequireDefault(_white);\n\nvar _github = __webpack_require__(/*! ../../assets/images/github */ \"./src/frontend/assets/images/github.js\");\n\nvar _github2 = _interopRequireDefault(_github);\n\nvar _facebook = __webpack_require__(/*! ../../assets/images/facebook */ \"./src/frontend/assets/images/facebook.js\");\n\nvar _facebook2 = _interopRequireDefault(_facebook);\n\nvar _email = __webpack_require__(/*! ../../assets/images/email */ \"./src/frontend/assets/images/email.js\");\n\nvar _email2 = _interopRequireDefault(_email);\n\nvar _phone = __webpack_require__(/*! ../../assets/images/phone */ \"./src/frontend/assets/images/phone.js\");\n\nvar _phone2 = _interopRequireDefault(_phone);\n\nvar _Item = __webpack_require__(/*! ./Item */ \"./src/frontend/components/Footer/Item.jsx\");\n\nvar _Item2 = _interopRequireDefault(_Item);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nconst StyledDiv = _styledComponents2.default.div`\n  background: ${_black2.default};\n  color: ${_white2.default};\n  height: auto;\n  grid-area: footer;\n  width: 100%;\n  padding: 20px 0;\n`;\n\nconst Container = _styledComponents2.default.div`\n  padding: 0 20px;\n  @media screen and (min-width: 700px) {\n    width: 90%;\n    margin: 0 auto;\n    display: flex;\n    padding: 0;\n  }\n`;\n\nconst ItemContainer = _styledComponents2.default.div`\n  @media screen and (min-width: 700px) {\n    margin: auto;\n    flex: 1;\n    display: inline-block;    \n  }\n`;\n\nexports.default = () => _react2.default.createElement(\n  StyledDiv,\n  null,\n  _react2.default.createElement(\n    Container,\n    null,\n    _react2.default.createElement(\n      ItemContainer,\n      null,\n      _react2.default.createElement(_Item2.default, {\n        data: 'Github',\n        link: 'https://github.com/godfreyzubiaga',\n        image: _github2.default\n      })\n    ),\n    _react2.default.createElement(\n      ItemContainer,\n      null,\n      _react2.default.createElement(_Item2.default, {\n        data: 'Facebook',\n        link: 'https://web.facebook.com/starksten4',\n        image: _facebook2.default\n      })\n    ),\n    _react2.default.createElement(\n      ItemContainer,\n      null,\n      _react2.default.createElement(_Item2.default, { data: '(+63) 9454602013', image: _phone2.default })\n    ),\n    _react2.default.createElement(\n      ItemContainer,\n      null,\n      _react2.default.createElement(_Item2.default, { data: 'godfreyzubiaga@gmail.com', image: _email2.default })\n    )\n  )\n);\n\n//# sourceURL=webpack:///./src/frontend/components/Footer/index.jsx?");
 
 /***/ }),
 
-/***/ "./src/frontend/components/Header.jsx":
-/*!********************************************!*\
-  !*** ./src/frontend/components/Header.jsx ***!
-  \********************************************/
+/***/ "./src/frontend/components/Portfolio/Project.jsx":
+/*!*******************************************************!*\
+  !*** ./src/frontend/components/Portfolio/Project.jsx ***!
+  \*******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _styledComponents = __webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.es.js\");\n\nvar _styledComponents2 = _interopRequireDefault(_styledComponents);\n\nvar _logo = __webpack_require__(/*! ../assets/images/logo */ \"./src/frontend/assets/images/logo.js\");\n\nvar _logo2 = _interopRequireDefault(_logo);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nconst Header = _styledComponents2.default.div`\n  grid-area: header;\n  max-width: 100vw;\n  display: grid;\n  font-size: 0.8em;\n  z-index: 9999;\n\n  @media screen and (min-width: 700px) {\n    grid-template-areas: 'logo . navigations';\n    grid-auto-columns: 300px 1fr 400px;\n  }\n\n  @media screen and (max-width: 700px) {\n    grid-template-areas: 'logo' 'navigations';\n    grid-auto-rows: 2fr 1fr;\n  }\n`;\n\nconst LogoContainer = _styledComponents2.default.div`\n  grid-area: logo;\n  margin: 5px 20px;\n  text-align: left;\n  font-size: 0.9em;\n  height: 70px;\n  cursor: pointer;\n\n  @media screen and (max-width: 700px) {\n    height: auto;\n    text-align: center;\n  }\n`;\n\nconst StyledLogo = _styledComponents2.default.div`\n  height: 100%;\n  width: 80%;\n  margin: auto;\n  background: url(${_logo2.default});\n  background-size: 100% 100%;\n`;\n\nconst NavigationContainer = _styledComponents2.default.div`\n  grid-area: navigations;\n  margin: 5px 20px;\n  display: flex;\n  padding: 0 10px;\n`;\n\nconst Navigation = _styledComponents2.default.button`\n  background: none;\n  border: none;\n  cursor: pointer;\n  font-size: 0.7em;\n  color: white;\n  flex: 1;\n\n  @media screen and (max-width: 700px) {\n    font-size: 0.6em;\n  }\n\n  &:focus {\n    outline: none;\n  }\n  margin: 0 10px;\n`;\n\nconst navigateTo = id => document.getElementById(id).scrollIntoView({ behavior: 'smooth' });\n\nexports.default = () => _react2.default.createElement(\n  Header,\n  null,\n  _react2.default.createElement(\n    LogoContainer,\n    { onClick: () => navigateTo('landing') },\n    _react2.default.createElement(StyledLogo, null)\n  ),\n  _react2.default.createElement(\n    NavigationContainer,\n    null,\n    _react2.default.createElement(\n      Navigation,\n      { onClick: () => navigateTo('landing') },\n      'Home'\n    ),\n    _react2.default.createElement(\n      Navigation,\n      { onClick: () => navigateTo('about') },\n      'About'\n    ),\n    _react2.default.createElement(\n      Navigation,\n      { onClick: () => navigateTo('works') },\n      'Works'\n    ),\n    _react2.default.createElement(\n      Navigation,\n      { onClick: () => navigateTo('contact') },\n      'Contact'\n    )\n  )\n);\n\n//# sourceURL=webpack:///./src/frontend/components/Header.jsx?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _styledComponents = __webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.es.js\");\n\nvar _styledComponents2 = _interopRequireDefault(_styledComponents);\n\nvar _propTypes = __webpack_require__(/*! prop-types */ \"./node_modules/prop-types/index.js\");\n\nvar _black = __webpack_require__(/*! ../../assets/themes/black */ \"./src/frontend/assets/themes/black.js\");\n\nvar _black2 = _interopRequireDefault(_black);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nconst StyledDiv = _styledComponents2.default.div`\n  text-align: center;\n  margin: 20px auto;\n  display: inline-block;\n  width: 200px;\n  color: ${_black2.default};\n`;\n\nconst ImageCotainer = _styledComponents2.default.div`\n  height: 200px;\n  width: 100%;\n  background: lightgray;\n`;\n\nconst Image = _styledComponents2.default.div`\n  height: 90%;\n  width: 90%;\n  margin: auto;\n  position: relative;\n  top: 50%;\n  border-radius: 5px;\n  transform: translateY(-50%);\n  background: url(${props => props.image});\n  background-size: 100% 100%;\n  background-repeat: no-repeat;\n`;\n\nconst DescriptionContainer = _styledComponents2.default.div`\n  margin: 10px auto;\n  width: 90%;\n`;\n\nconst ProjectName = _styledComponents2.default.p`\n  font-weight: 1.2em;\n  font-weight: bold;\n`;\n\nconst Date = _styledComponents2.default.p`\n  font-size: 0.8em;\n  margin-bottom: 10px;\n`;\n\nconst Info = _styledComponents2.default.p`\n  text-align: justify;\n  font-weight: 0.8em;\n`;\n\nconst TechnogyUsedContainer = _styledComponents2.default.div`\n  margin-top: 10px;\n`;\n\nconst TechnogyUsed = _styledComponents2.default.p`\n  font-weight: bold;\n`;\n\nconst ExternalLinkContainer = _styledComponents2.default.div`\n  margin: 10px auto;\n  width: 100%;\n  text-align: center;\n`;\n\nconst ExternalLink = _styledComponents2.default.a`\n  font-size: 1em;\n  cursor: pointer;\n  text-decoration: none;\n  color: ${_black2.default};\n  font-weight: bold;\n`;\n\nconst Line = _styledComponents2.default.hr`\n  margin: 10px 0;\n`;\n\nconst Project = ({\n  name,\n  description,\n  imageLink,\n  externalLink,\n  linkText,\n  technologyUsed,\n  date\n}) => _react2.default.createElement(\n  StyledDiv,\n  null,\n  _react2.default.createElement(\n    ImageCotainer,\n    null,\n    _react2.default.createElement(Image, { image: imageLink })\n  ),\n  _react2.default.createElement(\n    DescriptionContainer,\n    null,\n    _react2.default.createElement(\n      ProjectName,\n      null,\n      name\n    ),\n    _react2.default.createElement(\n      Date,\n      null,\n      date\n    ),\n    _react2.default.createElement(Line, null),\n    _react2.default.createElement(\n      Info,\n      null,\n      description\n    ),\n    _react2.default.createElement(Line, null),\n    _react2.default.createElement(\n      TechnogyUsedContainer,\n      null,\n      'Technology Used',\n      _react2.default.createElement(\n        TechnogyUsed,\n        null,\n        technologyUsed\n      )\n    ),\n    _react2.default.createElement(Line, null),\n    _react2.default.createElement(\n      ExternalLinkContainer,\n      null,\n      externalLink === '' ? 'Link Not Available' : _react2.default.createElement(\n        ExternalLink,\n        { href: externalLink },\n        ' ',\n        linkText,\n        ' '\n      )\n    )\n  )\n);\n\nProject.propTypes = {\n  name: _propTypes.string.isRequired,\n  description: _propTypes.string.isRequired,\n  imageLink: _propTypes.string.isRequired,\n  technologyUsed: _propTypes.string.isRequired,\n  date: _propTypes.string.isRequired,\n  externalLink: _propTypes.string,\n  linkText: _propTypes.string.isRequired\n};\n\nProject.defaultProps = {\n  externalLink: ''\n};\n\nexports.default = Project;\n\n//# sourceURL=webpack:///./src/frontend/components/Portfolio/Project.jsx?");
+
+/***/ }),
+
+/***/ "./src/frontend/components/Portfolio/index.jsx":
+/*!*****************************************************!*\
+  !*** ./src/frontend/components/Portfolio/index.jsx ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _styledComponents = __webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.es.js\");\n\nvar _styledComponents2 = _interopRequireDefault(_styledComponents);\n\nvar _black = __webpack_require__(/*! ../../assets/themes/black */ \"./src/frontend/assets/themes/black.js\");\n\nvar _black2 = _interopRequireDefault(_black);\n\nvar _imageNotAvailable = __webpack_require__(/*! ../../assets/images/imageNotAvailable */ \"./src/frontend/assets/images/imageNotAvailable.js\");\n\nvar _imageNotAvailable2 = _interopRequireDefault(_imageNotAvailable);\n\nvar _Project = __webpack_require__(/*! ./Project */ \"./src/frontend/components/Portfolio/Project.jsx\");\n\nvar _Project2 = _interopRequireDefault(_Project);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nconst StyledDiv = _styledComponents2.default.div`\n  text-align: center;\n  grid-area: portfolio;\n  margin: 30px;\n  color: ${_black2.default};\n`;\n\nconst StyledTitle = _styledComponents2.default.p`\n  letter-spacing: 10px;\n  font-size: 1.3em;\n  margin: 10px;\n  font-weight: 300;\n`;\n\nconst ProjectsContainer = _styledComponents2.default.div`\n  margin: auto;\n\n  @media screen and (min-width: 700px) {\n    display: flex;\n  }\n`;\n\nconst ProjectContainer = _styledComponents2.default.div`\n  flex: 1;\n`;\n\nexports.default = () => _react2.default.createElement(\n  StyledDiv,\n  null,\n  _react2.default.createElement(\n    StyledTitle,\n    null,\n    'PORTFOLIO'\n  ),\n  _react2.default.createElement(\n    ProjectsContainer,\n    null,\n    _react2.default.createElement(\n      ProjectContainer,\n      null,\n      _react2.default.createElement(_Project2.default, {\n        name: 'Global Shapers Iloilo',\n        description: 'A platform to let volunteers to volunteer to a project they like posted by an organization.',\n        imageLink: 'http://res.cloudinary.com/starksten/image/upload/v1528133510/new-portfolio/download.jpg',\n        externalLink: 'http://shapeiloilo.herokuapp.com',\n        linkText: 'Go to Website!',\n        technologyUsed: 'React, Styled-Components, MobX, Feathers, Webpack, Babel, MongoDB',\n        date: 'August 2017 - February 2018'\n      })\n    ),\n    _react2.default.createElement(\n      ProjectContainer,\n      null,\n      _react2.default.createElement(_Project2.default, {\n        name: 'Stand.bye',\n        description: 'A plaform that connects people that has free time and those people who doesn\\'t have time for simple household chores, such as dry cleaning, mailing, landscaping, etc.',\n        imageLink: 'http://res.cloudinary.com/starksten/image/upload/v1528134073/new-portfolio/Screenshot_from_2018-06-05_01-40-52.png',\n        externalLink: 'https://github.com/godfreyzubiaga/gforce.git',\n        linkText: 'Github Repository',\n        technologyUsed: 'React, Styled-Components, MobX, Feathers, Webpack, Babel, MongoDB',\n        date: 'December 2017'\n      })\n    ),\n    _react2.default.createElement(\n      ProjectContainer,\n      null,\n      _react2.default.createElement(_Project2.default, {\n        name: 'PetMyPet',\n        description: 'PetMyPet is an uber for pet lovers. This app will help pet owners to let a pet lover take care of their pets when they are at work or they are not around.',\n        imageLink: 'http://res.cloudinary.com/starksten/image/upload/v1528139108/new-portfolio/Screenshot_from_2018-06-05_03-04-45.png',\n        externalLink: 'https://github.com/godfreyzubiaga/petmypet.git',\n        linkText: 'Github Repository',\n        technologyUsed: 'React, Styled-Components, MobX, Express, Webpack, Babel, MongoDB',\n        date: 'April 2018'\n      })\n    ),\n    _react2.default.createElement(\n      ProjectContainer,\n      null,\n      _react2.default.createElement(_Project2.default, {\n        name: 'Mobius',\n        description: 'Mobius is just a practice project with my friend. It is a buy and sell for any type of cars type of website.',\n        imageLink: 'http://res.cloudinary.com/starksten/image/upload/v1528135407/mobius/Screenshot_from_2018-06-05_02-03-10.png',\n        externalLink: 'https://github.com/godfreyzubiaga/mobius.git',\n        linkText: 'Github Repository',\n        technologyUsed: 'React, Styled-Components, Redux, Firebase, Webpack, Babel',\n        date: 'May 2018 - Current'\n      })\n    ),\n    _react2.default.createElement(\n      ProjectContainer,\n      null,\n      _react2.default.createElement(_Project2.default, {\n        name: 'Eyetunes',\n        description: 'It is an iTunes and Spotify combined clone. You can subscribe and you can save it in your account. You can also be an artist/band and upload your songs/albums.',\n        imageLink: _imageNotAvailable2.default,\n        externalLink: 'https://github.com/godfreyzubiaga/eyetunes.git',\n        linkText: 'Github Repository',\n        technologyUsed: 'HTML, CSS, MariaDB, Vanilla Javascript, NodeJS',\n        date: 'May 2018 - Current'\n      })\n    )\n  )\n);\n\n//# sourceURL=webpack:///./src/frontend/components/Portfolio/index.jsx?");
+
+/***/ }),
+
+/***/ "./src/frontend/components/Skills/Skill.jsx":
+/*!**************************************************!*\
+  !*** ./src/frontend/components/Skills/Skill.jsx ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _styledComponents = __webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.es.js\");\n\nvar _styledComponents2 = _interopRequireDefault(_styledComponents);\n\nvar _propTypes = __webpack_require__(/*! prop-types */ \"./node_modules/prop-types/index.js\");\n\nvar _black = __webpack_require__(/*! ../../assets/themes/black */ \"./src/frontend/assets/themes/black.js\");\n\nvar _black2 = _interopRequireDefault(_black);\n\nvar _white = __webpack_require__(/*! ../../assets/themes/white */ \"./src/frontend/assets/themes/white.js\");\n\nvar _white2 = _interopRequireDefault(_white);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nconst StyledDiv = _styledComponents2.default.div`\n  text-align: center;\n  color: ${_white2.default};\n  background: ${_black2.default};\n  width: 80%;\n  height: 30px;\n  cursor: pointer;\n  display: inline-block;\n  transition-duration: 0.5s;\n  padding: 5px;\n  -webkit-font-smoothing: antialiased;\n\n  @media screen and (min-width: 700px) {\n    width: 70%;\n    &:hover {\n      transform: scale(1.5);\n      border-radius: 5px;\n      background: black;\n      transition-timing-function: ease;\n      transition-duration: 0.5s;\n      color: white;\n    }\n  }\n`;\n\nconst TextContainer = _styledComponents2.default.div`\n  position: relative;\n  top: 50%;\n  transform: translateY(-50%);\n  font-size: 90%;\n\n  @media screen and (max-width: 700px) {\n    font-size: 80%;\n  }\n`;\n\nconst Text = _styledComponents2.default.p``;\n\nconst Skill = ({ name }) => _react2.default.createElement(\n  StyledDiv,\n  null,\n  _react2.default.createElement(\n    TextContainer,\n    null,\n    _react2.default.createElement(\n      Text,\n      null,\n      name\n    )\n  )\n);\n\nSkill.propTypes = {\n  name: _propTypes.string.isRequired\n};\n\nexports.default = Skill;\n\n//# sourceURL=webpack:///./src/frontend/components/Skills/Skill.jsx?");
+
+/***/ }),
+
+/***/ "./src/frontend/components/Skills/index.jsx":
+/*!**************************************************!*\
+  !*** ./src/frontend/components/Skills/index.jsx ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _styledComponents = __webpack_require__(/*! styled-components */ \"./node_modules/styled-components/dist/styled-components.browser.es.js\");\n\nvar _styledComponents2 = _interopRequireDefault(_styledComponents);\n\nvar _Skill = __webpack_require__(/*! ./Skill */ \"./src/frontend/components/Skills/Skill.jsx\");\n\nvar _Skill2 = _interopRequireDefault(_Skill);\n\nvar _black = __webpack_require__(/*! ../../assets/themes/black */ \"./src/frontend/assets/themes/black.js\");\n\nvar _black2 = _interopRequireDefault(_black);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nconst StyledDiv = _styledComponents2.default.div`\n  text-align: center;\n  grid-area: skills;\n  width: 100%;\n  color: ${_black2.default};\n`;\n\nconst StyledTitle = _styledComponents2.default.p`\n  letter-spacing: 10px;\n  font-size: 1.3em;\n  margin: 10px;\n  font-weight: 300;\n`;\n\nconst SkillsContainer = _styledComponents2.default.div`\n  margin: 10px auto;\n  width: 70%;\n  height: 50px;\n\n  @media screen and (max-width: 700px) {\n    width: 90%;\n  }\n`;\n\nconst InnerContainer = _styledComponents2.default.div`\n  position: relative;\n  top: 50%;\n  transform: translateY(-50%);\n  display: flex;\n`;\n\nconst SkillContainer = _styledComponents2.default.div`\n  flex: 1;\n`;\n\nexports.default = () => _react2.default.createElement(\n  StyledDiv,\n  null,\n  _react2.default.createElement(\n    StyledTitle,\n    null,\n    'SKILLS'\n  ),\n  _react2.default.createElement(\n    SkillsContainer,\n    null,\n    _react2.default.createElement(\n      InnerContainer,\n      null,\n      _react2.default.createElement(\n        SkillContainer,\n        null,\n        _react2.default.createElement(_Skill2.default, { name: 'ReactJS' })\n      ),\n      _react2.default.createElement(\n        SkillContainer,\n        null,\n        _react2.default.createElement(_Skill2.default, { name: 'HTML5' })\n      ),\n      _react2.default.createElement(\n        SkillContainer,\n        null,\n        _react2.default.createElement(_Skill2.default, { name: 'CSS3' })\n      ),\n      _react2.default.createElement(\n        SkillContainer,\n        null,\n        _react2.default.createElement(_Skill2.default, { name: 'Javascript' })\n      ),\n      _react2.default.createElement(\n        SkillContainer,\n        null,\n        _react2.default.createElement(_Skill2.default, { name: 'NodeJS' })\n      )\n    )\n  )\n);\n\n//# sourceURL=webpack:///./src/frontend/components/Skills/index.jsx?");
 
 /***/ }),
 
