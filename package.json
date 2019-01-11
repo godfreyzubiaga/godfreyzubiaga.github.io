@@ -1,0 +1,41 @@
+{
+  "name": "new-portfolio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --config ./webpack.config.js --mode development",
+    "build:dev": "npx webpack --mode development",
+    "build": "npx webpack --mode production",
+    "deploy": "git subtree push --prefix public origin gh-pages"
+  },
+  "author": "Godfrey Zubiaga",
+  "license": "ISC",
+  "dependencies": {
+    "mobx": "^4.3.0",
+    "mobx-react": "^5.1.2",
+    "prop-types": "^15.6.1",
+    "react": "^16.4.0",
+    "react-animate-on-scroll": "^2.1.5",
+    "react-dom": "^16.4.0",
+    "react-spring": "^5.3.8",
+    "styled-components": "^3.3.0"
+  },
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.2.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.9.1",
+    "react-hot-loader": "^4.2.0",
+    "webpack": "^4.10.2",
+    "webpack-cli": "^3.0.1",
+    "webpack-dev-server": "^3.1.14"
+  }
+}
