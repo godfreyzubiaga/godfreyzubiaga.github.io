@@ -162,7 +162,7 @@ const BottomBG = styled.div`
     background: url(${topMiddle}) no-repeat;
     background-size: 101% 100%;
     bottom: -20px;
-    height: 250px;
+    height: 200px;
     z-index: -2;
     width: 100%;
   }
@@ -175,13 +175,14 @@ export default () => (
       <LogoContainer />
       <Container>
         <NameContainer>GODFREY ZUBIAGA</NameContainer>
-        <Position>Front end Developer & UI Designer</Position>
+        <Position>Front-end Developer & UI Designer</Position>
       </Container>
       <AboutMe>
-        I'm a front end developer / designer. I'm a humble yet proud developer
-        and a minimalistic designer with a dream of making my own UI Components
-        to make other developers' life easier. So, if you think that I'm suited
-        for a work from you, don't hesitate to reach me.
+        Hey there, fellow human. I'm Godfrey, a front-end developer / UI
+        designer by day and by night too (because why not). Kidding aside, I'm a
+        developer with a passion of helping, not making, other people to make
+        their own life easier. So if you think I have the qualification to turn
+        your ideas into reality, don't hesitate to reach me out.
       </AboutMe>
     </GridContainer>
     <BottomBG />
