@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import gray from '../../assets/themes/gray';
 import bottomMiddle from '../../assets/images/bottomMiddle';
 import github from '../../assets/images/github';
-import facebook from '../../assets/images/facebook';
+import twitter from '../../assets/images/twitter';
 import email from '../../assets/images/email';
 import phone from '../../assets/images/phone';
 import Item from './Item';
@@ -65,9 +65,9 @@ export default () => (
       </ItemContainer>
       <ItemContainer>
         <Item
-          data="Facebook Link"
-          link="https://fb.me/starksten4"
-          image={facebook}
+          data="Twitter Link"
+          link="https://mobile.twitter.com/starksten4"
+          image={twitter}
         />
       </ItemContainer>
       <ItemContainer>
