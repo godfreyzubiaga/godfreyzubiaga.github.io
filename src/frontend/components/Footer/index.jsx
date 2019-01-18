@@ -66,7 +66,7 @@ export default () => (
       <ItemContainer>
         <Item
           data="Twitter Link"
-          link="https://mobile.twitter.com/stark044"
+          link="https://mobile.twitter.com/freymwork"
           image={twitter}
         />
       </ItemContainer>
