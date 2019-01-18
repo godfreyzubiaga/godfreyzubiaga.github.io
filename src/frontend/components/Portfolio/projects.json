@@ -2,6 +2,7 @@
   {
     "id": 1,
     "name": "Starksten UI",
+    "roles": ["Owner", "Front-end Developer", "UI Designer"],
     "description": "A simple UI Components for React for developers who uses Styled Components to design React Apps.",
     "technologyUsed": [
       "ReactJS",
@@ -24,8 +25,9 @@
     ]
   },
   {
-    "id": 7,
+    "id": 2,
     "name": "Substr",
+    "roles": ["Owner", "Front-end Developer", "UI Designer"],
     "description": "A Personal Assistant OTG.",
     "technologyUsed": [
       "ReactJS",
@@ -38,16 +40,12 @@
     ],
     "logoLink": "https://res.cloudinary.com/substr/image/upload/q_100/v1543380256/Website/New_Pofile_Photo_png.png",
     "date": "October 2018 - present",
-    "links": [
-      {
-        "name": "Website",
-        "url": "https://www.substr.co"
-      }
-    ]
+    "links": [{ "name": "Website", "url": "https://www.substr.co" }]
   },
   {
-    "id": 2,
+    "id": 3,
     "name": "Global Shapers Iloilo",
+    "roles": ["Front-end Developer", "UI Designer"],
     "description": "A platform to let volunteers to volunteer to a project they like posted by an organization.",
     "technologyUsed": [
       "ReactJS",
@@ -61,10 +59,7 @@
     "logoLink": "https://res.cloudinary.com/starksten/image/upload/v1528133510/new-portfolio/download.jpg",
     "date": "August 2017 - February 2018",
     "links": [
-      {
-        "name": "Website",
-        "url": "https://shapeiloilo.herokuapp.com"
-      },
+      { "name": "Website", "url": "https://shapeiloilo.herokuapp.com" },
       {
         "name": "Repository",
         "url": "https://github.com/godfreyzubiaga/globalshapers"
@@ -72,8 +67,9 @@
     ]
   },
   {
-    "id": 3,
+    "id": 4,
     "name": "Stand.bye",
+    "roles": ["Owner", "Front-end Developer", "UI Designer"],
     "description": "A plaform that connects people that has free time and those people who doesn't have time for simple household chores, such as dry cleaning, mailing, landscaping, etc.",
     "technologyUsed": [
       "ReactJS",
@@ -94,8 +90,9 @@
     ]
   },
   {
-    "id": 4,
+    "id": 5,
     "name": "PetMyPet",
+    "roles": ["Owner", "Full Stack Developer", "UI Designer"],
     "description": "PetMyPet is an uber for pet lovers. This app will help pet owners to let a pet lover take care of their pets when they are at work or they are not around.",
     "technologyUsed": [
       "ReactJS",
@@ -116,8 +113,9 @@
     ]
   },
   {
-    "id": 5,
+    "id": 6,
     "name": "Ethlantis",
+    "roles": ["Front-end Developer"],
     "description": "A trustless esports betting platform.",
     "technologyUsed": [
       "ReactJS",
@@ -137,8 +135,9 @@
     ]
   },
   {
-    "id": 6,
+    "id": 7,
     "name": "Stark Todo",
+    "roles": ["Owner", "Front-end Developer", "UI Designer"],
     "description": "A minimalist TODO List Web App.",
     "technologyUsed": [
       "ReactJS",
@@ -151,10 +150,7 @@
     "logoLink": "https://res.cloudinary.com/starksten/image/upload/v1547206117/Group.png",
     "date": "August 2018",
     "links": [
-      {
-        "name": "Website",
-        "url": "http://stark-todo.neocities.org"
-      },
+      { "name": "Website", "url": "http://stark-todo.neocities.org" },
       {
         "name": "Repository",
         "url": "https://github.com/godfreyzubiaga/stark-todo"
@@ -162,8 +158,9 @@
     ]
   },
   {
-    "id": 7,
+    "id": 8,
     "name": "GRPA",
+    "roles": ["Owner", "Front-end Developer", "UI Designer"],
     "description": "Generate React Parcel App. My own customized CRA but instead of webpack, I used ParcelJS as the bundler",
     "technologyUsed": [
       "ReactJS",
@@ -183,6 +180,27 @@
       {
         "name": "Repository",
         "url": "https://github.com/godfreyzubiaga/parcel-react-boilerplate"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Simple Profile",
+    "roles": ["Owner", "Full Stack Developer", "UI Designer"],
+    "description": "A Web Application that serves as your temporary/permanent portfolio that showcase your projects/works with zero coding. Just fill in the details and we will handle how to display your portfolio.",
+    "technologyUsed": [
+      "ReactJS",
+      "Styled-Components",
+      "Babel",
+      "Webpack",
+      "NodeJS"
+    ],
+    "logoLink": "https://res.cloudinary.com/starksten/image/upload/v1547605076/Simple%20Profile/white.png",
+    "date": "January 2018 - present",
+    "links": [
+      {
+        "name": "Repository",
+        "url": "https://github.com/godfreyzubiaga/simple-profile"
       }
     ]
   }
