@@ -154,6 +154,14 @@ const StyledDate = styled.div`
   color: #c7c7c7;
 `;
 
+const Role = styled(TechnologyUsed)`
+  font-size: 0.8em;
+  background: ${black};
+  color: white;
+  margin-bottom: 0;
+  font-style: italic;
+`;
+
 export default ({ project }) => (
   <ScrollAnimation
     duration={0.5}
@@ -176,6 +184,12 @@ export default ({ project }) => (
               </Link>
             ))}
           </LinksContainer>
+          <Description>
+            Roles:{' '}
+            {project.roles.map((role, index) => (
+              <Role key={index}>{role}</Role>
+            ))}
+          </Description>
           <TechnologyUsedContainer>
             {project.technologyUsed.map((tech) => (
               <TechnologyUsed key={tech}>{tech}</TechnologyUsed>
