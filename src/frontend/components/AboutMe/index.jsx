@@ -78,7 +78,7 @@ const Container = styled.div`
 `;
 
 const NameContainer = styled.div`
-  line-spacing: 5px;
+  letter-spacing: 5px;
   letter-spacing: 0.2em;
   animation: ${slideFromLeft} 1s cubic-bezier(0, 0, 0.58, 1);
 
@@ -168,6 +168,12 @@ const BottomBG = styled.div`
   }
 `;
 
+const description = `Hey there, fellow human. I'm Godfrey, a front-end developer / UI
+        designer by day and by night too (because why not). Kidding aside, I'm a
+        developer with a passion of helping, not making, other people how to make
+        their own life easier. So if you think I can help you in any way, 
+        don't hesitate to reach me out.`;
+
 export default () => (
   <StyledDiv>
     <TopLeftBG />
@@ -177,13 +183,7 @@ export default () => (
         <NameContainer>GODFREY ZUBIAGA</NameContainer>
         <Position>Front-end Developer & UI Designer</Position>
       </Container>
-      <AboutMe>
-        Hey there, fellow human. I'm Godfrey, a front-end developer / UI
-        designer by day and by night too (because why not). Kidding aside, I'm a
-        developer with a passion of helping, not making, other people to make
-        their own life easier. So if you think I have the qualification to turn
-        your ideas into reality, don't hesitate to reach me out.
-      </AboutMe>
+      <AboutMe>{description}</AboutMe>
     </GridContainer>
     <BottomBG />
   </StyledDiv>
