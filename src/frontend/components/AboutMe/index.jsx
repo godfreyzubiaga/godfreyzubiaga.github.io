@@ -169,10 +169,10 @@ const BottomBG = styled.div`
 `;
 
 const description = `Hey there, fellow human. I'm Godfrey, a front-end developer / UI
-        designer by day and by night too (because why not). Kidding aside, I'm a
-        developer with a passion of helping, not making, other people how to make
-        their own life easier. So if you think I can help you in any way, 
-        don't hesitate to reach me out.`;
+        designer by day and by night too (because why not). Kidding aside, I'm a ReactJS developer.
+        I've been a front-end dev for over 2 years and haven't looked back since. I can help you turn your
+        "Million Dollar Idea" into a web application XD. But seriously, you can take take a look at my github or contact me
+        and I might share you my private repositories if my open source projects aren't enough.`;
 
 export default () => (
   <StyledDiv>
