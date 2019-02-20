@@ -6,40 +6,40 @@ import logo from '../../assets/images/logo';
 import topMiddle from '../../assets/images/topMiddle';
 import mobileBG from '../../assets/images/mobileBG';
 import {
-  slideFromLeft,
-  slideFromRight,
-  slideFromBottom,
-  bounce,
+	slideFromLeft,
+	slideFromRight,
+	slideFromBottom,
+	bounce,
 } from '../../assets/animations';
 
 const StyledDiv = styled.div`
-  color: ${black};
+	color: ${black};
 
-  @media (min-width: 1000px) {
-    height: 100vh;
-  }
+	@media (min-width: 1000px) {
+		height: 100vh;
+	}
 
-  @media (max-width: 1000px) {
-    background: url(${mobileBG}) no-repeat;
-    background-size: 100% 100%;
-    background-attachment: fixed;
-    background-position: center;
-    padding-bottom: 30px;
-    padding-top: 50px;
-  }
+	@media (max-width: 1000px) {
+		background: url(${mobileBG}) no-repeat;
+		background-size: 100% 100%;
+		background-attachment: fixed;
+		background-position: center;
+		padding-bottom: 30px;
+		padding-top: 50px;
+	}
 `;
 
 const GridContainer = styled.div`
-  @media (min-width: 1000px) {
-    display: grid;
-    grid-template-areas: 'nameAndPos logo' 'about logo';
-    grid-auto-rows: 1fr;
-    grid-auto-columns: 2fr 1fr;
-    width: 100%;
-    position: relative;
-    top: 50%;
-    transform: translateY(-65%);
-  }
+	@media (min-width: 1000px) {
+		display: grid;
+		grid-template-areas: 'wrapper logo' 'wrapper logo';
+		grid-auto-rows: 1fr;
+		grid-auto-columns: 2fr 1fr;
+		width: 100%;
+		position: relative;
+		top: 50%;
+		transform: translateY(-65%);
+	}
 `;
 
 const TopLeftBG = styled.div`
@@ -56,135 +56,150 @@ const TopLeftBG = styled.div`
 `;
 
 const Container = styled.div`
-  @media (min-width: 1000px) {
-    grid-area: nameAndPos;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    width: 550px;
-    margin: auto;
-  }
+	@media (min-width: 1000px) {
+		grid-area: nameAndPos;
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		width: 550px;
+		margin: auto;
+	}
 
-  @media (max-width: 1000px) {
-    width: 80%;
-    margin: 50px auto 100px auto;
-    text-align: center;
-  }
+	@media (max-width: 1000px) {
+		width: 80%;
+		margin: 50px auto 100px auto;
+		text-align: center;
+	}
 
-  @media (max-width: 500px) {
-    width: 90%;
-    margin: 50px auto;
-  }
+	@media (max-width: 500px) {
+		width: 90%;
+		margin: 50px auto;
+	}
 `;
 
 const NameContainer = styled.div`
-  letter-spacing: 5px;
-  letter-spacing: 0.2em;
-  animation: ${slideFromLeft} 1s cubic-bezier(0, 0, 0.58, 1);
+	letter-spacing: 5px;
+	letter-spacing: 0.2em;
+	animation: ${slideFromLeft} 1s ease;
 
-  @media (max-width: 1000px) {
-    font-size: 1.8em;
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+	@media (max-width: 1000px) {
+		font-size: 1.8em;
+		margin: auto;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
 
-  @media (max-width: 500px) {
-    font-size: 1.3em;
-    margin: 0 auto;
-  }
+	@media (max-width: 500px) {
+		font-size: 1.3em;
+		margin: 0 auto;
+	}
 
-  @media (min-width: 1000px) {
-    font-size: 2.5em;
-    grid-area: name;
-  }
+	@media (min-width: 1000px) {
+		font-size: 2.5em;
+		grid-area: name;
+	}
 `;
 
 const Position = styled.div`
-  font-size: 1.5em;
-  letter-spacing: 0.1em;
-  animation: ${slideFromRight} 1s cubic-bezier(0, 0, 0.58, 1);
+	font-size: 1.5em;
+	letter-spacing: 0.1em;
+	animation: ${slideFromRight} 1s ease;
 
-  @media (max-width: 1000px) {
-    font-size: 1em;
-    margin: 0;
-  }
+	@media (max-width: 1000px) {
+		font-size: 1em;
+		margin: 0;
+	}
 
-  @media (max-width: 500px) {
-    margin: 0 auto;
-  }
+	@media (max-width: 500px) {
+		margin: 0 auto;
+	}
 `;
 
 const LogoContainer = styled.div`
-  width: 300px;
-  height: 300px;
-  background: url(${logo}) no-repeat;
-  background-size: 100% 100%;
-  grid-area: logo;
-  animation: ${bounce} 1s cubic-bezier(0, 0, 0.58, 1);
+	width: 300px;
+	height: 300px;
+	margin-top: 100px;
+	background: url(${logo}) no-repeat;
+	background-size: 100% 100%;
+	grid-area: logo;
+	animation: ${bounce} 1s ease;
 
-  @media (max-width: 1000px) {
-    width: 200px;
-    height: 200px;
-    margin: 0 auto -40px auto;
-  }
+	@media (max-width: 1000px) {
+		width: 200px;
+		height: 200px;
+		margin: 0 auto -40px auto;
+	}
 `;
 
 const AboutMe = styled.div`
-  font-size: 20px;
-  letter-spacing: 0.1em;
-  animation: ${slideFromBottom} 1s cubic-bezier(0, 0, 0.58, 1);
+	font-size: 18px;
+	letter-spacing: 0.1em;
+	animation: ${slideFromBottom} 1s ease;
+	text-align: justify;
 
-  @media (max-width: 1000px) {
-    width: 85%;
-    margin: 0 auto;
-    font-size: 1.2em;
-    text-align: center;
-  }
+	@media (max-width: 1000px) {
+		width: 85%;
+		margin: -50px auto 0 auto;
+		font-size: 1.2em;
+		text-align: center;
+	}
 
-  @media (max-width: 500px) {
-    margin: 20px auto 40px auto;
-    font-size: 1em;
-  }
+	@media (max-width: 500px) {
+		margin: 20px auto 40px auto;
+		font-size: 1em;
+	}
 
-  @media (min-width: 1000px) {
-    grid-area: about;
-    width: 550px;
-    margin: auto;
-    font-size: 1.2em;
-  }
+	@media (min-width: 1000px) {
+		grid-area: about;
+		width: 550px;
+		margin: auto;
+		font-size: 1.2em;
+	}
 `;
 
 const BottomBG = styled.div`
-  @media (min-width: 1000px) {
-    position: absolute;
-    background: url(${topMiddle}) no-repeat;
-    background-size: 101% 100%;
-    bottom: -20px;
-    height: 200px;
-    z-index: -2;
-    width: 100%;
-  }
+	@media (min-width: 1000px) {
+		position: absolute;
+		background: url(${topMiddle}) no-repeat;
+		background-size: 101% 100%;
+		bottom: -20px;
+		height: 200px;
+		z-index: -2;
+		width: 100%;
+	}
 `;
 
-const description = `Hey there, fellow human. I'm Godfrey, a front-end developer / UI
-        designer by day and by night too (because why not). Kidding aside, I'm a ReactJS developer.
-        I've been a front-end dev for over 2 years and haven't looked back since. I can help you turn your
-        "Million Dollar Idea" into a web application XD. But seriously, you can take take a look at my github or contact me
-        and I might share you my private repositories if my open source projects aren't enough.`;
+const Wrapper = styled.div`
+	grid-area: wrapper;
+	height: 120%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+`;
+
+const description = `Hey there, I'm Godfrey, a Front-end Developer and also a UI Designer. 
+I’ve been using ReactJS over 2 years now. 
+I used to be a full-stack developer for over a year before but eventually fell in love with the front-end world. 
+When it comes to UI designs, I have a very keen eyes for it. I want every details to meet my expectations as much as possible.
+I usually make my own UI rather than using UI libraries made by other people. If I can make it, I'll try to make that before looking for pre-built libraries.
+My dream is simple, make and teach other people how to make their life easier.
+`;
 
 export default () => (
-  <StyledDiv>
-    <TopLeftBG />
-    <GridContainer>
-      <LogoContainer />
-      <Container>
-        <NameContainer>GODFREY ZUBIAGA</NameContainer>
-        <Position>Front-end Developer & UI Designer</Position>
-      </Container>
-      <AboutMe>{description}</AboutMe>
-    </GridContainer>
-    <BottomBG />
-  </StyledDiv>
+	<StyledDiv>
+		<TopLeftBG />
+		<GridContainer>
+			<LogoContainer />
+			<Wrapper>
+				<Container>
+					<NameContainer>GODFREY ZUBIAGA</NameContainer>
+					<Position>Front-end Developer & UI Designer</Position>
+				</Container>
+				<AboutMe>{description}</AboutMe>
+			</Wrapper>
+		</GridContainer>
+		<BottomBG />
+	</StyledDiv>
 );
