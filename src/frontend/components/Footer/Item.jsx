@@ -44,7 +44,7 @@ const Item = ({ data, image, link }) => (
         <TextContainer> {data} </TextContainer>
       </div>
     ) : (
-      <StyledLink href={link}>
+      <StyledLink href={link} target="_blank">
         <ImageContainer image={image} />
         <TextContainer> {data} </TextContainer>
       </StyledLink>
