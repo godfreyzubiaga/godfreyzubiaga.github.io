@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import Skill from './Skill';
 import reactLogo from '../../assets/images/react';
 import css3Logo from '../../assets/images/css3';
-import javascriptLogo from '../../assets/images/javascript';
 import nodeJSLogo from '../../assets/images/node';
 import figmaLogo from '../../assets/images/figma';
+import typescriptLogo from '../../assets/images/typescript';
 
 const StyledDiv = styled.div`
   @media (min-width: 1000px) {
@@ -72,9 +72,9 @@ export default () => (
         </SkillContainer>
         <SkillContainer>
           <Skill
-            name="Javascript"
-            logo={javascriptLogo}
-            link="https://www.javascript.com/"
+            name="TypeScript"
+            logo={typescriptLogo}
+            link="https://www.typescriptlang.org/"
           />
         </SkillContainer>
         <SkillContainer>

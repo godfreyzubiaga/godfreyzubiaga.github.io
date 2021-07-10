@@ -179,12 +179,12 @@ const Wrapper = styled.div`
 	justify-content: center;
 `;
 
-const description = `Hey there, I'm Godfrey, a Front-end Developer and also a UI Designer. 
-I’ve been using ReactJS over 2 years now. 
-I used to be a full-stack developer for over a year before but eventually fell in love with the front-end world. 
-When it comes to UI designs, I have a very keen eyes for it. I want every details to meet my expectations as much as possible.
-I usually make my own UI rather than using UI libraries made by other people. If I can make it, I'll try to make that before looking for pre-built libraries.
-My dream is simple, make and teach other people how to make their life easier.
+const description = `
+	Hey! I'm Godfrey, a Front-end developer as well as a newbie UI Designer.
+	I do a lot of personal projects, some of them get finished and deployed.
+	Before, I was a fullstack developer but somehow, along the way, I focused more on the front-end side.
+	Most of the time I love building apps from scratch but I'm also capable of using a prebuilt ui components.
+	A little trivia about me: I love to have the first few commits for a project. I love teaching too!
 `;
 
 export default () => (

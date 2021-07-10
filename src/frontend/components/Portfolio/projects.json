@@ -1,5 +1,27 @@
 [
 	{
+		"id": 0,
+		"name": "Juggernauts",
+		"roles": ["Owner", "Solo Developer"],
+		"description": "A web app resources for our work related stuff.",
+		"technologyUsed": [
+			"ReactJS",
+			"Redux",
+			"Styled-Components",
+			"Firebase",
+			"Typescript"
+		],
+		"logoLink": "https://res.cloudinary.com/dev-amdocsph/image/upload/v1610201939/juggernauts/Logo_nyvxwe.png",
+		"date": "December 2020 - present",
+		"links": [
+			{
+				"name": "Website",
+				"url": "https://juggernaut-chi.vercel.app/"
+			}
+		],
+		"status": "Deployed"
+	},
+	{
 		"id": 1,
 		"name": "Starksten UI",
 		"roles": ["Owner", "Front-end Developer", "UI Designer"],
